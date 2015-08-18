@@ -1,0 +1,20 @@
+logflume:
+  title: "logflume"
+  paths: [
+    "/home/shadowbq/sandbox/github-shadowbq/logflume"
+  ]
+"CBS Documents":
+  title: "CBS Documents"
+  paths: [
+    "/home/shadowbq/Documents/CBS Documents"
+  ]
+threatinator:
+  title: "threatinator"
+  paths: [
+    "/home/shadowbq/sandbox/threatinator"
+  ]
+"packets-at-rest-gui-simple":
+  title: "packets-at-rest-gui-simple"
+  paths: [
+    "/home/shadowbq/sandbox/github-shadowbq/packets-at-rest-gui-simple"
+  ]

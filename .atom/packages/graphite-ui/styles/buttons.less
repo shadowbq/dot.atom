@@ -1,0 +1,75 @@
+@import "ui-variables";
+@import "ui-mixins";
+
+.btn {
+  transition: color 200ms linear, background 200ms linear;
+  border-bottom: 1px solid @base-background-color;
+  .text(normal);
+
+  &.selected {
+    background-color: @background-color-selected;
+    border-bottom: 1px solid @button-background-color
+  }
+
+  &.btn-primary {
+    .text(normal);
+    &:hover {
+      border-color: @button-border-color;
+    }
+    &.selected {
+      background-color: @background-color-selected;
+      .text(highlight);
+    }
+  }
+  &.btn-info {
+    .text(info);
+    &:hover {
+      border-color: @text-color-info;
+    }
+    &.selected {
+      background-color: @background-color-info;
+      .text(highlight);
+    }
+  }
+  &.btn-success {
+    .text(success);
+    &:hover {
+      border-color: @text-color-success;
+    }
+    &.selected {
+      background-color: @background-color-success;
+      .text(highlight);
+    }
+  }
+  &.btn-warning {
+    .text(warning);
+    &:hover {
+      border-color: @text-color-warning;
+    }
+    &.selected {
+      background-color: @background-color-warning;
+      .text(highlight);
+    }
+  }
+  &.btn-error {
+    .text(error);
+    &:hover {
+      border-color: @text-color-error;
+    }
+    &.selected {
+      background-color: @background-color-error;
+      .text(highlight);
+      &:hover {
+        border: 0 !important;
+      }
+    }
+  }
+
+  &:hover {
+    .text(highlight);
+  }
+}
+
+button:disabled {
+  color: @base-background-color !important;
+}
