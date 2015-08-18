@@ -53,5 +53,6 @@ apm install new-package
 ./.atom/packages/tabs-to-spaces
 ./.atom/packages/term2
 ./.atom/packages/travis-ci-status
+./.atom/packages/wakatime
 ./.atom/packages/zenburn
 ```
