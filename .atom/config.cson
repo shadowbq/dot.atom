@@ -44,9 +44,19 @@
   "open-terminal-here":
     app: "exo-open"
     args: "--launch TerminalEmulator --working-directory"
-".ini.source":
-  editor:
-    tabLength: 2
+  wakatime:
+    ignore: [
+      "^/var/"
+      "^/tmp/"
+      "^/private/"
+      "COMMIT_EDITMSG$"
+      "PULLREQ_EDITMSG$"
+      "MERGE_MSG$"
+    ]
+    apikey: "fbfe60f3-fa95-44f5-b4b7-4b4598fe79dd"
 ".diff.source":
   editor:
     scrollPastEnd: true
+".ini.source":
+  editor:
+    tabLength: 2

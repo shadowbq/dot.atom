@@ -2,4 +2,4 @@
 ; modifications will be lost the next time any apm command is run.
 ;
 ; You should instead edit your .apmrc config located in ~/.atom/.apmrc
-cache = /home/shadowbq/.atom/.apm
+cache = /home/shadowbq/.homesick/repos/dot.atom/.atom/.apm
