@@ -4,7 +4,6 @@
 Repo for my personal dot.atom packages.
 
 
-
 ## Description
 
 This is my list of atom packages that work well with Atom 1.x
@@ -15,6 +14,8 @@ apm install new-package
 
 ## Package list
 ```
+(~/.homesick/repos/dot.atom)$ find ./.atom/packages/ -maxdepth 1 -type d |sort -u
+./.atom/packages/
 ./.atom/packages/atom-beautify
 ./.atom/packages/atom-zeal
 ./.atom/packages/bookmark-panel
@@ -29,7 +30,9 @@ apm install new-package
 ./.atom/packages/graphite-ui
 ./.atom/packages/highlight-selected
 ./.atom/packages/html-include-resource
+./.atom/packages/jsonlint
 ./.atom/packages/language-ini
+./.atom/packages/language-powershell
 ./.atom/packages/leanpub-snippets
 ./.atom/packages/linter
 ./.atom/packages/markdown-toc
@@ -37,6 +40,7 @@ apm install new-package
 ./.atom/packages/minimap
 ./.atom/packages/minimap-selection
 ./.atom/packages/new-tab
+./.atom/packages/nucleus-dark-ui
 ./.atom/packages/open-recent
 ./.atom/packages/open-terminal-here
 ./.atom/packages/outlander-syntax
@@ -56,3 +60,7 @@ apm install new-package
 ./.atom/packages/wakatime
 ./.atom/packages/zenburn
 ```
+
+## Homesick
+
+You can use homesick to link this repo into place.
