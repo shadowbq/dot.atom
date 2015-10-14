@@ -3,13 +3,57 @@ History
 -------
 
 
-4.1.1 (unreleased)
+4.1.8 (2015-09-29)
+++++++++++++++++++
+
+- fix bug in guess_language function
+- improve dependency detection
+
+
+4.1.7 (2015-09-16)
+++++++++++++++++++
+
+- default request timeout of 30 seconds
+- new --timeout command line argument to change request timeout in seconds
+
+
+4.1.6 (2015-09-06)
+++++++++++++++++++
+
+- allow passing command line arguments using sys.argv
+
+
+4.1.5 (2015-09-06)
+++++++++++++++++++
+
+- fix entry point for pypi distribution
+
+
+4.1.4 (2015-08-29)
+++++++++++++++++++
+
+- new --entity and --entitytype command line arguments
+
+
+4.1.3 (2015-08-28)
+++++++++++++++++++
+
+- fix local session caching
+
+
+4.1.2 (2015-08-25)
+++++++++++++++++++
+
+- fix bug in offline caching which prevented heartbeats from being cleaned up
+
+
+4.1.1 (2015-08-25)
 ++++++++++++++++++
 
 - send hostname in X-Machine-Name header
 - catch exceptions from pygments.modeline.get_filetype_from_buffer
 - upgrade requests package to v2.7.0
-- handle non-ASCII characters in import path
+- handle non-ASCII characters in import path on Windows, won't fix for Python2
 - upgrade argparse to v1.3.0
 - move language translations to api server
 - move extension rules to api server
@@ -432,4 +476,3 @@ History
 ++++++++++++++++++
 
 - Birth
-

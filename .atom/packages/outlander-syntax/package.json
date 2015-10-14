@@ -1,11 +1,11 @@
 {
   "name": "outlander-syntax",
   "theme": "syntax",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A dark syntax theme from elsewhere",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mthadley/outlander-syntax"
+    "url": "git+https://github.com/mthadley/outlander-syntax.git"
   },
   "license": "MIT",
   "engines": {
@@ -16,11 +16,11 @@
   "bugs": {
     "url": "https://github.com/mthadley/outlander-syntax/issues"
   },
-  "homepage": "https://github.com/mthadley/outlander-syntax",
-  "_id": "outlander-syntax@1.0.2",
-  "_shasum": "d83e52718959f86db41959bfade98fa6d377db27",
-  "_resolved": "file:../d-115614-9180-cpvmnf/package.tgz",
-  "_from": "../d-115614-9180-cpvmnf/package.tgz",
+  "homepage": "https://github.com/mthadley/outlander-syntax#readme",
+  "_id": "outlander-syntax@1.0.3",
+  "_shasum": "56692905e890752af0a667b19b3c55b2d1adde3d",
+  "_resolved": "file:../d-11597-7731-2nmw2e/package.tgz",
+  "_from": "../d-11597-7731-2nmw2e/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],

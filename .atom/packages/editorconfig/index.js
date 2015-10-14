@@ -1,12 +1,20 @@
 'use babel';
 import editorconfig from 'editorconfig';
+import generateConfig from './commands/generate';
 
 function init(editor) {
+	generateConfig();
+
 	if (!editor) {
 		return;
 	}
 
 	const file = editor.getURI();
+
+	const lineEndings = {
+		crlf: '\r\n',
+		lf: '\n'
+	};
 
 	if (!file) {
 		return;
@@ -17,18 +25,27 @@ function init(editor) {
 			return;
 		}
 
-		if (config.indent_style === 'tab') {
+		const indentStyle = config.indent_style || (editor.getSoftTabs() ? 'space' : 'tab');
+
+		if (indentStyle === 'tab') {
 			editor.setSoftTabs(false);
 
 			if (config.tab_width) {
 				editor.setTabLength(config.tab_width);
 			}
-		} else if (config.indent_style === 'space') {
+		} else if (indentStyle === 'space') {
 			editor.setSoftTabs(true);
 
 			if (config.indent_size) {
 				editor.setTabLength(config.indent_size);
 			}
+		}
+
+		if (config.end_of_line && config.end_of_line in lineEndings) {
+			const preferredLineEnding = lineEndings[config.end_of_line];
+			const buffer = editor.getBuffer();
+			buffer.setPreferredLineEnding(preferredLineEnding);
+			buffer.setText(buffer.getText().replace(/\r?\n/g, preferredLineEnding));
 		}
 
 		if (config.charset) {
@@ -39,6 +56,6 @@ function init(editor) {
 	});
 }
 
-export let activate = () => {
+export const activate = () => {
 	atom.workspace.observeTextEditors(init);
 };

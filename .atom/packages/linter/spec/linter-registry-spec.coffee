@@ -2,12 +2,12 @@ describe 'linter-registry', ->
   LinterRegistry = require('../lib/linter-registry')
   EditorLinter = require('../lib/editor-linter')
   linterRegistry = null
-  getLinter = ->
-    return {grammarScopes: ['*'], lintOnFly: false, modifiesBuffer: false, scope: 'file', lint: -> }
+  {getLinter, getMessage} = require('./common')
+
   beforeEach ->
     waitsForPromise ->
       atom.workspace.destroyActivePaneItem()
-      atom.workspace.open('test.txt')
+      atom.workspace.open('file.txt')
     linterRegistry?.dispose()
     linterRegistry = new LinterRegistry
 
@@ -150,7 +150,7 @@ describe 'linter-registry', ->
         lintOnFly: false
         modifiesBuffer: false
         scope: 'file'
-        lint: -> return [{type: "Error", text: "Something"}]
+        lint: -> return [{type: 'Error', text: 'Something'}]
       }
       info = undefined
       linterRegistry.addLinter(linter)

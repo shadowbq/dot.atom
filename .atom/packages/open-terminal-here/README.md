@@ -3,13 +3,25 @@
 Open the Terminal (Mac OS X, Linux) or Command Prompt (Windows)
 in the given directory via context menu or keyboard shortcut.
 
+![Screenshot of the "Open Terminal Here" menu item displayed][1]
+
+## Keyboard shortcuts
+
+### Open the Terminal in the current directory
+
 Platform | Keyboard shortcut
 -------- | -----------------
 Mac OS X | `ctrl-cmd-t`
-Windows  | `ctrl-shift-t`
-Linux    | `ctrl-shift-t`
+Windows  | `ctrl-alt-t`
+Linux    | `ctrl-alt-t`
 
-![Screenshot of the "Open Terminal Here" menu item displayed][1]
+### Open the Terminal in the project directory
+
+Platform | Keyboard shortcut
+-------- | -----------------
+Mac OS X | `alt-cmd-t`
+Windows  | `ctrl-alt-shift-t`
+Linux    | `ctrl-alt-shift-t`
 
 ## FAQ
 

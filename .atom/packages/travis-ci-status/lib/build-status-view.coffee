@@ -1,4 +1,5 @@
 {$, View} = require 'atom-space-pen-views'
+{GitRepository} = require 'atom'
 
 TravisCi = require 'travis-ci'
 
@@ -19,6 +20,7 @@ class BuildStatusView extends View
     this.on 'click', => @matrix.toggle()
     @attach()
     @subscribeToRepo()
+    @update()
 
   # Internal: Serialize the state of this view.
   #
@@ -70,22 +72,22 @@ class BuildStatusView extends View
   subscribeToRepo: =>
     @unsubscribe(@repo) if @repo?
 
-    repos = atom.project.getRepositories()
-    console.log "DEBUG:", repos
-    name = atom.config.get('travis-ci-status.travisCiRemoteName')
-    repo = repos.filter((r) -> /(.)*github\.com/i.test(r.getConfigValue("remote.#{name}.url")))
-    @repo = repo[0]
+    @repoPromise = Promise.all(atom.project.getDirectories().map(
+                  atom.project.repositoryForDirectory.bind(atom.project)))
+    @repoPromise.then (repos) =>
+        name = atom.config.get('travis-ci-status.travisCiRemoteName')
+        repo_list = repos.filter((r) -> /(.)*github\.com/i.test(r.getConfigValue("remote.#{name}.url")))
+        @repo = repo_list[0]
+        console.log "DEBUG: ", @repo
 
-    $(@repo).on 'status-changed', (path, status) =>
-      @update() if path is @getActiveItemPath()
+        @repo.onDidChangeStatus @update
 
-    $(@repo).on 'statuses-changed', @update
-    @update()
 
   # Internal: Update the repository build status from Travis CI.
   #
   # Returns nothing.
   update: =>
+    console.log this
     return unless @hasParent()
 
     @status.addClass('pending')

@@ -1,6 +1,6 @@
 {
   "name": "file-type-icons",
-  "version": "0.7.1",
+  "version": "0.7.3",
   "description": "Changes the icon for files in the Tree View and Tabs to reflect the file's type",
   "author": {
     "name": "Lee Dohm",
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/lee-dohm/file-type-icons"
+    "url": "git+https://github.com/lee-dohm/file-type-icons.git"
   },
   "license": "MIT",
   "engines": {
@@ -26,11 +26,11 @@
   "bugs": {
     "url": "https://github.com/lee-dohm/file-type-icons/issues"
   },
-  "homepage": "https://github.com/lee-dohm/file-type-icons",
-  "_id": "file-type-icons@0.7.1",
-  "_shasum": "679404ff5570dfe745319b90c78f436f99f9a92f",
-  "_resolved": "file:../d-115718-3415-u8ydzx/package.tgz",
-  "_from": "../d-115718-3415-u8ydzx/package.tgz",
+  "homepage": "https://github.com/lee-dohm/file-type-icons#readme",
+  "_id": "file-type-icons@0.7.3",
+  "_shasum": "db513cbf11181a24ade334fc40915d45c6bb2cf2",
+  "_resolved": "file:../d-115815-5155-cfljsu/package.tgz",
+  "_from": "../d-115815-5155-cfljsu/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],

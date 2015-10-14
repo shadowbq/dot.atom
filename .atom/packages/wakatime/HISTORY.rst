@@ -3,6 +3,68 @@ History
 -------
 
 
+4.1.1 (2015-09-29)
+++++++++++++++++++
+
+- upgrade wakatime cli to v4.1.8
+- fix bug in guess_language function
+- improve dependency detection
+- default request timeout of 30 seconds
+- new --timeout command line argument to change request timeout in seconds
+
+
+4.1.0 (2015-09-14)
+++++++++++++++++++
+
+- add settings button to wakatime package in plugins menu list
+
+
+4.0.17 (2015-09-10)
+++++++++++++++++++
+
+- prevent errors from corrupted wakatime cli zip file download
+- upgrade wakatime cli to v4.1.6
+- new --entity and --entitytype command line arguments
+- fix entry point for pypi distribution
+- allow passing command line arguments using sys.argv
+
+
+4.0.16 (2015-08-28)
+++++++++++++++++++
+
+- upgrade wakatime cli to v4.1.3
+- fix local session caching
+
+
+4.0.15 (2015-08-25)
+++++++++++++++++++
+
+- upgrade wakatime cli to v4.1.2
+- fix bug in offline caching which prevented heartbeats from being cleaned up
+
+
+4.0.14 (2015-08-25)
+++++++++++++++++++
+
+- upgrade wakatime cli to v4.1.1
+- send hostname in X-Machine-Name header
+- catch exceptions from pygments.modeline.get_filetype_from_buffer
+- upgrade requests package to v2.7.0
+- handle non-ASCII characters in import path on Windows, won't fix for Python2
+- upgrade argparse to v1.3.0
+- move language translations to api server
+- move extension rules to api server
+- detect correct header file language based on presence of .cpp or .c files named the same as the .h file
+
+
+4.0.13 (2015-08-20)
+++++++++++++++++++
+
+- prompt the user before installing python
+- remove wakatime cli directory when package is uninstalled
+- use python v3.4.3
+
+
 4.0.12 (2015-07-05)
 ++++++++++++++++++
 

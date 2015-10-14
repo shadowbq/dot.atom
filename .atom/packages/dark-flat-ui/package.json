@@ -2,11 +2,18 @@
   "name": "dark-flat-ui",
   "theme": "ui",
   "main": "lib/dark-flat-ui",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "A dark flat ui theme",
+  "keywords": [
+    "dark",
+    "flat",
+    "ui",
+    "grey",
+    "gray"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/olmokramer/atom-dark-flat-ui"
+    "url": "git+https://github.com/olmokramer/atom-dark-flat-ui.git"
   },
   "license": "MIT",
   "engines": {
@@ -17,11 +24,11 @@
   "bugs": {
     "url": "https://github.com/olmokramer/atom-dark-flat-ui/issues"
   },
-  "homepage": "https://github.com/olmokramer/atom-dark-flat-ui",
-  "_id": "dark-flat-ui@1.2.0",
-  "_shasum": "c091faeb32f5178295de91ca77ea5478378a6646",
-  "_resolved": "file:../d-115614-8800-sp9fia/package.tgz",
-  "_from": "../d-115614-8800-sp9fia/package.tgz",
+  "homepage": "https://github.com/olmokramer/atom-dark-flat-ui#readme",
+  "_id": "dark-flat-ui@1.2.2",
+  "_shasum": "bc919d7b752d55ff65207c97f737185e222e8cb4",
+  "_resolved": "file:../d-115815-5057-3epvlu/package.tgz",
+  "_from": "../d-115815-5057-3epvlu/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],

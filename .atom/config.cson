@@ -7,7 +7,7 @@
     fontSize: 13
   core:
     themes: [
-      "graphite-ui"
+      "atom-dark-ui"
       "zenburn"
     ]
     disabledPackages: [
@@ -37,8 +37,7 @@
     _analyticsUserId: "1ec7a761-cef2-4ca7-90e6-e5c7473482b0"
     ruby_indent_size: 2
   "preview-plus": {}
-  "tree-view":
-    hideVcsIgnoredFiles: true
+  "tree-view": {}
   "autocomplete-plus": {}
   "view-tail-large-files": {}
   "open-terminal-here":

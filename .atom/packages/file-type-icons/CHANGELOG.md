@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## **v0.7.3** &mdash; *Released: 20 August 2015*
+
+* :bug: Moved declaration of specs and tests icon after all other icons so that it overrides the normal file icon for those languages
+
+## **v0.7.2** &mdash; *Released: 20 August 2015*
+
+* Added icon for Java files
+* Added Elixir specs and tests to the list of files to be given the flask icon
+
 ## **v0.7.1** &mdash; *Released: 31 July 2015*
 
 * Added icon for Go files

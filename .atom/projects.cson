@@ -1,15 +1,15 @@
+freezerburn:
+  title: "Freezer Burn"
+  paths: [
+    "/home/shadowbq/sandbox/github-shadowbq/freezer_burn"
+  ]
 logflume:
-  title: "logflume"
+  title: "Log Flume"
   paths: [
     "/home/shadowbq/sandbox/github-shadowbq/logflume"
   ]
-"CBS Documents":
-  title: "CBS Documents"
-  paths: [
-    "/home/shadowbq/Documents/CBS Documents"
-  ]
 threatinator:
-  title: "threatinator"
+  title: "Threatinator"
   paths: [
     "/home/shadowbq/sandbox/threatinator"
   ]
@@ -17,4 +17,24 @@ threatinator:
   title: "packets-at-rest-gui-simple"
   paths: [
     "/home/shadowbq/sandbox/github-shadowbq/packets-at-rest-gui-simple"
+  ]
+"CBS Documents":
+  title: "CBS Documents - Offline"
+  paths: [
+    "/home/shadowbq/Documents/CBS Documents"
+  ]
+cloudburst_mssp_docs:
+  title: "Cloudburst MSSP Books"
+  paths: [
+    "/home/shadowbq/sandbox/github-shadowbq/cloudburst_mssp_docs"
+  ]
+cache_machine:
+  title: "cache_machine"
+  paths: [
+    "/home/shadowbq/sandbox/github-shadowbq/cache_machine"
+  ]
+"packets-at-rest":
+  title: "packets-at-rest"
+  paths: [
+    "/home/shadowbq/sandbox/github-shadowbq/packets-at-rest"
   ]

@@ -1,7 +1,7 @@
 atom-wakatime
 =============
 
-Automatic time tracking for GitHub's Atom text editor.
+Quantify your coding inside GitHub's Atom editor.
 
 
 Installation
@@ -24,3 +24,22 @@ Screen Shots
 ------------
 
 ![Project Overview](https://wakatime.com/static/img/ScreenShots/ScreenShot-2014-10-29.png)
+
+
+Configuring
+-----------
+
+Settings for atom-wakatime are under `Settings -> Packages -> wakatime -> Settings`.
+
+Additional settings are in `$HOME/.wakatime.cfg` for [wakatime cli](https://github.com/wakatime/wakatime#configuring).
+
+
+Troubleshooting
+---------------
+
+Note: Behind a proxy? Configure Atom to use your proxy when installing wakatime:
+https://github.com/atom/apm#behind-a-firewall
+
+Atom writes errors to the developer console at `View -> Developer -> Toggle Developer Tools`.
+
+For more general troubleshooting information, see [wakatime/wakatime#troubleshooting](https://github.com/wakatime/wakatime#troubleshooting).

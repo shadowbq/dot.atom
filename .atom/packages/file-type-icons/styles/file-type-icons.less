@@ -27,6 +27,10 @@
   .coffeescript-icon;
 }
 
+[data-name$='.java']:before {
+  .java-icon;
+}
+
 // JavaScript files
 [data-name$='.js']:before {
   .javascript-icon;
@@ -205,12 +209,6 @@
   .symlink-icon;
 }
 
-// Specs
-[data-name$='spec.rb']:before,
-[data-name$='-spec.coffee']:before {
-  .test-file-icon;
-}
-
 // Grunt
 [data-name='Gruntfile']:before {
   .grunt-icon;
@@ -235,6 +233,21 @@
   .go-icon;
 }
 
-.list-tree .icon[data-name$='.go']:before {
-  top: 0px !important;
+// Specs
+[data-name$='spec.rb']:before,
+[data-name$='-spec.coffee']:before,
+[data-name$='spec.exs']:before,
+[data-name$='test.exs']:before {
+  .test-file-icon;
+}
+
+// Fixup for devicons
+.list-tree {
+  .icon[data-name$='.go']:before {
+    top: 0px !important;
+  }
+
+  .icon[data-name$='.java']:before {
+    top: -1px !important;
+  }
 }

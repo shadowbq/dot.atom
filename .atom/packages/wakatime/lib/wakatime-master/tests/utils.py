@@ -2,10 +2,13 @@
 
 import logging
 
+from wakatime.compat import u
+
+
 try:
-    from mock import patch
+    import mock
 except ImportError:
-    from unittest.mock import patch
+    import unittest.mock as mock
 try:
     # Python 2.6
     import unittest2 as unittest
@@ -25,8 +28,9 @@ class TestCase(unittest.TestCase):
             for patch_this in self.patch_these:
                 namespace = patch_this[0] if isinstance(patch_this, (list, set)) else patch_this
 
-                patcher = patch(namespace)
+                patcher = mock.patch(namespace)
                 mocked = patcher.start()
+                mocked.reset_mock()
                 self.patched[namespace] = mocked
 
                 if isinstance(patch_this, (list, set)) and len(patch_this) > 0:
@@ -36,4 +40,10 @@ class TestCase(unittest.TestCase):
                     mocked.return_value = retval
 
     def tearDown(self):
-        patch.stopall()
+        mock.patch.stopall()
+
+    def normalize_list(self, items):
+        return sorted([u(x) for x in items])
+
+    def assertListsEqual(self, first_list, second_list):
+        self.assertEquals(self.normalize_list(first_list), self.normalize_list(second_list))

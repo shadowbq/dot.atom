@@ -14,12 +14,32 @@ process = require 'child_process'
 request = require 'request'
 rimraf = require 'rimraf'
 
-latestCLIVersion = '4.1.0'
+latestCLIVersion = '4.1.8'
+
+packageVersion = null
+unloadHandler = null
+lastHeartbeat = 0
+lastFile = ''
 
 module.exports =
+  config:
+    apikey:
+      title: 'Api Key'
+      description: 'Your secret key from https://wakatime.com/settings.'
+      type: 'string'
+      default: ''
+      order: 1
+    ignore:
+      title: 'Exclude File Paths'
+      description: 'Exclude these file paths from logging; POSIX regex patterns'
+      type: 'array'
+      default: ['^/var/', '^/tmp/', '^/private/', 'COMMIT_EDITMSG$', 'PULLREQ_EDITMSG$', 'MERGE_MSG$']
+      items:
+        type: 'string'
+      order: 2
 
   activate: (state) ->
-    window.VERSION = atom.packages.getLoadedPackage('wakatime').metadata.version
+    packageVersion = atom.packages.getLoadedPackage('wakatime').metadata.version
 
     if not isCLIInstalled()
       installCLI(->
@@ -34,24 +54,31 @@ module.exports =
       )
     isPythonInstalled((installed) ->
       if not installed
-        installPython()
+        atom.confirm
+          message: 'WakaTime requires Python'
+          detailedMessage: 'Let\'s download and install Python now?'
+          buttons:
+            OK: -> installPython()
+            Cancel: -> window.alert('Please install Python (https://www.python.org/downloads/) and restart Atom to enable the WakaTime plugin.')
     )
-    setupConfig()
+    cleanupOnUninstall()
     setupEventHandlers()
-    console.log 'WakaTime v'+VERSION+' loaded.'
-
-lastHeartbeat = 0
-lastFile = ''
+    console.log 'WakaTime v'+packageVersion+' loaded.'
 
 enoughTimePassed = (time) ->
   return lastHeartbeat + 120000 < time
 
-setupConfig = () ->
-  unless atom.config.get("wakatime.apikey")?
-    defaults =
-      apikey: ""
-      ignore: ["^/var/", "^/tmp/", "^/private/", "COMMIT_EDITMSG$", "PULLREQ_EDITMSG$", "MERGE_MSG$"]
-    atom.config.set("wakatime", defaults)
+cleanupOnUninstall = () ->
+  if unloadHandler?
+    unloadHandler.dispose()
+    unloadHandler = null
+  unloadHandler = atom.packages.onDidUnloadPackage((p) ->
+    if p? and p.name == 'wakatime'
+      removeCLI()
+      if unloadHandler?
+        unloadHandler.dispose()
+        unloadHandler = null
+  )
 
 setupEventHandlers = () ->
   atom.workspace.observeTextEditors (editor) =>
@@ -151,9 +178,9 @@ pythonLocation = (callback, locations) ->
 
 installPython = () ->
   if os.type() is 'Windows_NT'
-    url = 'https://www.python.org/ftp/python/3.4.2/python-3.4.2.msi';
+    url = 'https://www.python.org/ftp/python/3.4.3/python-3.4.3.msi';
     if os.arch().indexOf('x64') > -1
-      url = "https://www.python.org/ftp/python/3.4.2/python-3.4.2.amd64.msi";
+      url = "https://www.python.org/ftp/python/3.4.3/python-3.4.3.amd64.msi";
     console.log 'Downloading python...'
     msiFile = __dirname + path.sep + 'python.msi'
     downloadFile(url, msiFile, ->
@@ -203,16 +230,24 @@ installCLI = (callback) ->
 
 extractCLI = (zipFile, callback) ->
   console.log 'Extracting wakatime-master.zip file...'
+  removeCLI(->
+    unzip(zipFile, __dirname, callback)
+  )
+
+removeCLI = (callback) ->
   if fs.existsSync(__dirname + path.sep + 'wakatime-master')
     try
       rimraf(__dirname + path.sep + 'wakatime-master', ->
-        unzip(zipFile, __dirname, callback)
+        if callback?
+          callback()
       )
     catch e
       console.warn e
-      unzip(zipFile, __dirname, callback)
+      if callback?
+        callback()
   else
-    unzip(zipFile, __dirname, callback)
+    if callback?
+      callback()
 
 downloadFile = (url, outputFile, callback) ->
   r = request(url)
@@ -227,8 +262,8 @@ downloadFile = (url, outputFile, callback) ->
 
 unzip = (file, outputDir, callback) ->
   if fs.existsSync(file)
-    zip = new AdmZip(file)
     try
+      zip = new AdmZip(file)
       zip.extractAllTo(outputDir, true)
     catch e
       console.warn e
@@ -248,17 +283,24 @@ sendHeartbeat = (file, lineno, isWrite) ->
         unless apikey
           return
 
-        args = [cliLocation(), '--file', file.path, '--key', apikey, '--plugin', 'atom-wakatime/' + VERSION]
+        args = [cliLocation(), '--file', file.path, '--key', apikey, '--plugin', 'atom-wakatime/' + packageVersion]
         if isWrite
           args.push('--write')
         if lineno?
           args.push('--lineno')
           args.push(lineno)
-        process.execFile(python, args, (error, stdout, stderr) ->
+        proc = process.execFile(python, args, (error, stdout, stderr) ->
           if error?
-            console.warn error
-          # else
-          #     console.log(args)
+            if stderr? and stderr != ''
+              console.warn stderr
+            if stdout? and stdout != ''
+              console.warn stdout
+            if proc.exitCode == 102
+              console.warn 'Warning: api error (102); Check your ~/.wakatime.log file for more details.'
+            else if proc.exitCode == 103
+              console.warn 'Warning: config parsing error (103); Check your ~/.wakatime.log file for more details.'
+            else
+              console.warn error
         )
         lastHeartbeat = time
         lastFile = file.path
