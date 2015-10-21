@@ -1,0 +1,61 @@
+"*":
+  editor:
+    invisibles: {}
+    scrollPastEnd: true
+    showIndentGuide: true
+    showInvisibles: true
+    fontSize: 13
+  core:
+    themes: [
+      "atom-dark-ui"
+      "zenburn"
+    ]
+    disabledPackages: [
+      "package-cop"
+      "seeing-is-believing"
+      "resize-panes"
+      "bookmark-panel"
+    ]
+  linter: {}
+  minimap:
+    plugins:
+      selection: true
+  "exception-reporting":
+    userId: "fb0bf17a-637c-e9b7-9200-fc4c58d2dba5"
+  welcome:
+    showOnStartup: false
+  "file-types":
+    cfg: "source.ini"
+    "\\.bash.*": "source.shell"
+  "gist-it":
+    userToken: "f13c07d164aded0c50268feac1d1249e846e123a"
+    newGistsDefaultToPrivate: true
+  "remote-atom":
+    keep_alive: true
+  "travis-ci-status": {}
+  "atom-beautify":
+    _analyticsUserId: "1ec7a761-cef2-4ca7-90e6-e5c7473482b0"
+    ruby_indent_size: 2
+  "preview-plus": {}
+  "tree-view": {}
+  "autocomplete-plus": {}
+  "view-tail-large-files": {}
+  "open-terminal-here":
+    app: "exo-open"
+    args: "--launch TerminalEmulator --working-directory"
+  wakatime:
+    ignore: [
+      "^/var/"
+      "^/tmp/"
+      "^/private/"
+      "COMMIT_EDITMSG$"
+      "PULLREQ_EDITMSG$"
+      "MERGE_MSG$"
+    ]
+    apikey: "fbfe60f3-fa95-44f5-b4b7-4b4598fe79dd"
+".diff.source":
+  editor:
+    scrollPastEnd: true
+".ini.source":
+  editor:
+    tabLength: 2

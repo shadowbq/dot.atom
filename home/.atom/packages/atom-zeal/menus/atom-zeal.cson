@@ -1,0 +1,5 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  'atom-workspace': [
+    {label: 'Look up in Zeal', command: 'atom-zeal:context-menu'}
+  ]
